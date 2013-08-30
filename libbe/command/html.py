@@ -81,7 +81,7 @@ class ServerApp (libbe.util.wsgi.WSGI_AppObject,
             }
 
     # handlers
-    def style(self, environ, start_response): 
+    def style(self, environ, start_response):
         template = self.template.get_template('style.css')
         content = template.render()
         return self.ok_response(
@@ -125,7 +125,7 @@ class ServerApp (libbe.util.wsgi.WSGI_AppObject,
                             self.bugdirs, target)))
                 for target in bugs]
         else:
-            template = self.template.get_template('standard_index.html')           
+            template = self.template.get_template('standard_index.html')
         content = template.render(template_info)+'\n'
         return self.ok_response(
             environ, start_response, content, content_type='text/html')
@@ -351,7 +351,7 @@ div.main {
   margin-top: 1em;
   background-color: #fcfcfc;
   border-radius: 10px;
-  
+
 }
 
 div.footer {
@@ -397,7 +397,7 @@ table {
   border-spacing: 0px 0px;
   width: auto;
   padding: 0px;
-  
+
   }
 
 tb { border: 1px; }
@@ -463,14 +463,14 @@ td.tab {
 td.sel.tab {
     background-color: #c3d9ff ;
     border: 1px solid #c3d9ff;
-    font-weight:bold;    
+    font-weight:bold;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
 
-td.nsel.tab { 
+td.nsel.tab {
     border: 1px solid #c3d9ff;
-    font-weight:bold;    
+    font-weight:bold;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -480,7 +480,7 @@ table.bug_list {
     border-style: solid;
     border-color: #c3d9ff;
     padding: 0px;
-    width: 100%;            
+    width: 100%;
     border: 1px solid #c3d9ff;
 }
 
@@ -919,7 +919,7 @@ will exit after the dump without serving anything over the wire.
                 for url_,path_ in url_mappings:
                     content = content.replace(url_, path_)
                 if not os.path.isdir(bug_dir_path):
-                    self._make_dir(bug_dir_path)                    
+                    self._make_dir(bug_dir_path)
                 self._write_file(content=content, path_array=path_array)
 
     def _get_content(self, caller, app, path, data_dict=None):

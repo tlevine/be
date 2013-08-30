@@ -337,6 +337,8 @@ def _get_blocked_by(bug):
             uuids.append(_parse_blocked_by_string(line))
     return uuids
 
+def _get_not_blocked():
+
 def _repair_one_way_link(blocked_bug, blocking_bug, blocks=None):
     if blocks == True: # add blocks link
         blocks_string = _generate_blocks_string(blocked_bug)
@@ -364,8 +366,12 @@ def get_blocks(bugdirs, bug):
     Return a list of bugs that the given bug blocks.
     """
     blocks = []
-    for uuid in _get_blocks(bug):
-        blocks.append(libbe.command.util.bug_from_uuid(bugdirs, uuid))
+    if bug == None:
+        for uuid in _get_not_blocked():
+            blocks.append(libbe.command.util.bug_from_uuid(bugdirs, uuid))
+    else:
+        for uuid in _get_blocks(bug):
+            blocks.append(libbe.command.util.bug_from_uuid(bugdirs, uuid))
     return blocks
 
 def get_blocked_by(bugdirs, bug):
